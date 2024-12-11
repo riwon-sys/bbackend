@@ -69,7 +69,7 @@ public class Example5 { // 시작
 				// boolean bool2 = 3; // 틀린 이유 : boolean 타입에는 3을 대입 할 수 없다.
 				boolean bool6 = false; // 50
 				System.out.println("bool6 : + bool6");
-	      
+	      */ 
 	   
 	     
 	     
@@ -96,7 +96,7 @@ public class Example5 { // 시작
 		 String name14 ="합격";
 		 System.out.printf( "과목의 총점수는 %d 입니다." , point12+point13);
 	     System.out.printf("따라서 %s 입니다." , name14);
-	     */
+	    
 	     
 	
 	} // 메인 끝
