@@ -182,22 +182,7 @@ System.out.println( grade1 );
 예제 출력 3 
 22 55
 출처*/		
-		Scanner scan = new Scanner(System.in);
-		System.out.print("시간을 입력 하세요.");
-		int h = scan.nextInt();
-		System.out.println("분을 입력 하세요.");
-	    int m = scan.nextInt();
-		
-		if(m > 45){
-			m => -45;
-		}else{
-			(h < 59)
-			h= -1;
-		}
-		System.out.println(h);
-		System.out.println(m);
-		
-		System.out.println("알람");
+	
 			
 				
 	} // 메인 끝
