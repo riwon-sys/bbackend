@@ -1,53 +1,48 @@
-package day06; // 폴더
+package day06;
 
 import java.util.Scanner;
 
-public class Example1 { // 시작
-   public static void main(String[] args) { // 메인 시작
-		// 실습 1: 게시판 프로그램
-		/* - 제목 , 내용 , 작성자를 입력받아서 저장,출력,삭제,수정 
-		   - 문법 : 변수 , 입출력함수 , 연산자 , 제어문(조건문,반복문)
-		   - 순서 : 반복 - 출력(화면)-입력-조건문
-		   - 게시물 3개 저장하기 위해서 필요한 것 : 게시물 1개당 제목,내용,작성자 의 저장소3개 필요 -> 총 9개 필요
-		 */
-	   // [6] 변수 
-	         // [6-2] 변수 선언 ;	타입{논리(boolean) 문자(char) 정수(int) 실수(double)}
-	    String 제목1 = null; String 내용1 = null; String 작성자1 = null; // null 이란? 참조값이 없다. 문자열이 없다
-		String 제목2 = null; String 내용2 = null; String 작성자2 = null;
-		String 제목3 = null; String 내용3 = null; String 작성자3 = null;
-		// [1]
-		while(true) { // 무한루프 ; 무한 반복 문
-		// [2]	
-			System.out.println("===게시판 프로그램==="); // 출력함수 syso(c+s)
-			System.out.println("1.등록 2.출력 3.수정 4.삭제 : ");
-		// [3] 	
-			Scanner scan =new Scanner( System.in ); // 입력함수 // 입력 객체 :Scanner 변수명 = new Scanner ( System.in );
-		int 선택메뉴 = scan.nextInt(); // 입력 객체 : 변수명.nextXXX(); // 정의한 메뉴번호 선택받기 // 입력 받은 저장 값
-		// [4] 	연산자 , ==같다
-		// [5]  조건문
-		
-		if(선택메뉴 == 1) {System.out.println("===1.등록 선택===");
-		   System.out.println("> 제목 : ");  String title = scan.next(); // > 입력받고 저장
-		   System.out.println("> 내용 : ");  String content = scan.next(); // > 입력받고 저장
-		   System.out.println("> 작성자 : "); String writer = scan.next(); // > 입력받고 저장
-		   if(제목1 == null) { 제목1 = title; 내용1 = content; 작성자1 = writer; }// - while 밖에 변수에 입력받은 3개의 문자열을 각 각 저장
-		   else if(제목2== null) { 제목1 = title; 내용1 = content; 작성자1 = writer; } // 비어 있으면 2
-		   else if(제목3== null) { 제목2 = title; 내용2 = content; 작성자2 = writer; } // 비어 있으면 3
-		   else {System.out.println("==실패==");} 
-		}
-		
-		else if ( 선택메뉴 == 2 ) { System.out.println("==성공==");
-			System.out.println("===2.출력 선택===");
-			System.out.println("> 제목 : " + 제목1 + "> 내용 : " + 내용1 + "> 작성자 : " + 작성자1 ); // 오류 이유 : 변수의 초기값(처음에 변수 만들 때 값을 넣는 행위;초기화)이 없음  
-			// 초기값이 없다는 의미(쓰레기값;변수를 유지하기 위한 컴퓨터가 만든 임의값)
-		if ( 제목1 != null )	{System.out.println("> 제목 : " + 제목1 + "> 내용 : " + 내용1 + "> 작성자 : " + 작성자1 );}
-		if ( 제목2 != null )	{System.out.println("> 제목 : " + 제목2 + "> 내용 : " + 내용2 + "> 작성자 : " + 작성자2 );}
-		if ( 제목3 != null )	{System.out.println("> 제목 : " + 제목3 + "> 내용 : " + 내용3 + "> 작성자 : " + 작성자3 );}
-		}
-          		
-		
-	//	else if ( 선택메뉴 == 3 ) {System.out.println("===1.수정 선택===");}
-	//	else if ( 선택메뉴 == 4 ) {System.out.println("===1.삭제 선택===");}
-		}	
-	} // 메인 끝
-} // 끝
+/*
+	자바 과제3 : (식당) 대기번호 발행 프로그램
+	- 문법 : 변수 , 입출력함수 , 연산자 , 제어문(조건문/반복문) 
+	- 전화번호 , 인원수 를 입력받아서 저장·출력 구현
+	- 총 대기명단은 3개 까지 가능하다. 대기명단 1개당 전화번호·인원수 저장소(변수) 2개 필요 , 대기명단3개 --> 변수 6개 필요.
+	제출 : 카카오톡방에 과제 코드가 존재하는 본인 git 상세주소 제출 
+*/
+public class Example1 { // class start 
+	public static void main(String[] args) { // main start
+		// [5] 각 사용자에게 입력받은 값들을 저장할 변수 선언 
+		String phone1 = null;	int count1 = 0;
+		String phone2 = null;	int count2 = 0;
+		String phone3 = null;	int count3 = 0;
+		while( true ) { // [1] while 반복문 , while(true){} 무한반복문 , 대기명단을 등록과출력을 24시간 하기 위해서 무한루프 사용했다.
+			System.out.print("\n\n>>>>1.대기 등록 2.대기 현황 : "); // [2] 출력함수 , print() , 사용자에게 등록과 출력 메뉴를 보여준다.
+			Scanner scan = new Scanner(System.in);
+			int choose = scan.nextInt();// [3] 입력함수 , Scanner객체필요 , nextInt()함수 이용하하여 정수타입을 입력받아 정수타입 변수에 저장했다
+			// [4] 조건문 , if(흐름조건) , 입력받은 값(메뉴선택)에 따른 흐름제어(1이면 , 2이면 )
+			if( choose == 1 ) { System.out.println(">>> 대기명단 등록 >>>");
+				// [5] 각 사용자에게 필요한 데이터 입력받기. 
+				System.out.print(">> 전화번호 : ");	String phone = scan.next();
+				System.out.print(">> 인원수 : ");		int count = scan.nextInt();
+				// [6] 만약에 비어 있는 명단이 있으면 각 입력받 데이터를 비어 있는 곳에 대입하기 , 비어있다 , 문자열이면 null , 숫자이면 0 판단 , 임의 판단 
+				if( phone1 == null ) { phone1 = phone; count1 = count; }
+				else if( phone2 == null ) { phone2 = phone; count2 = count; }
+				else if( phone3 == null ) { phone3 = phone; count3 = count; }	
+			}else if( choose == 2 ) {System.out.println(">>> 대기명단 현황 >>>");
+				// [7] 만약에 비어 있지 않으면(명단이 있으면) 각각 변수값 출력하기. 
+				if( phone1 != null ) { System.out.printf("인원수 %d 명 , 연락처 : %s \n" , count1 , phone1 ); }
+				if( phone2 != null ) { System.out.printf("인원수 %d 명 , 연락처 : %s \n" , count2 , phone2 ); }
+				if( phone3 != null ) { System.out.printf("인원수 %d 명 , 연락처 : %s \n" , count3 , phone3 ); }
+			}
+		} // while end 
+	} // main end 
+} // class end 
+
+
+
+
+
+
+
+
+
