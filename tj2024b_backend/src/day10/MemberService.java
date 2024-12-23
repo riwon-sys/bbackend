@@ -48,8 +48,8 @@ public class MemberService { // 회원객체가 사용하는 메소드 설계
 } // class end
 
 /*
- 	1. 기본타입 : boolean char byte short int long float double (*8*)
+ 	1. 기본타입 : boolean char byte short int long float double (*8*) // 블 차 바 쇼 인 롱 플 더
  		== 기본타입 비교   
- 	2. 참조/클래스타입 : String , Scanner , Member , MemberService ( 8개 외 )
+ 	2. 참조/클래스타입 : String , Scanner , Member , MemberService ( 8개 외 ) // 스 스 멤 멤
  		.equals() 참조타입 비교 함수 
 */
