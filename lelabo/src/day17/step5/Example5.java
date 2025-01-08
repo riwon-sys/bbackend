@@ -1,4 +1,4 @@
-package step5;
+package day17.step5;
 
 public class Example5 {
 public static void main(String[] args) {

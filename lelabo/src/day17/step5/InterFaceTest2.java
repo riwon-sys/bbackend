@@ -1,4 +1,5 @@
-package step5;
+
+package day17.step5;
 
 interface InterFaceTest2{
 	// 인터페이스의 구성멤버
@@ -26,6 +27,5 @@ interface InterFaceTest2{
 
 
 
-public class InterFaceTest2 {
 
-} // c.e
+
