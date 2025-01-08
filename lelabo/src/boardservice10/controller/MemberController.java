@@ -52,8 +52,47 @@ public class MemberController {
 		loginMno = 0;
 	} // f end 
 	
+	// 6. 내 정보 보기 컨틀롤러 메소드
+	//public 주는곳의타입 myInfo(받는 타입) {}
+	public MemberDto myInfo() {
+		// -dao 에게 로그인(로그인된 회원번호PK) 정보 주고 결과받기
+		MemberDto result = MemberDao.getInstance().myInfo(loginMno);
+		return result;
+	}
+	// 7. 회원 탈퇴 컨트롤ㄹ러 메소드
+	public void delete() {
+		MemberDao.getInstance().delete(loginMno);
+	}
 	 
 } // class end 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

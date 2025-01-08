@@ -37,19 +37,18 @@ public class Example3 { // 시작
 		System.out.print("JAVA3");
 		System.out.print("JAVA4");
 
-		//3.printf( "형식문자" , 형식대입값1  ) : 인수 값에 형식문자를 이용하여 수식을 출력하는 함수
-		System.out.printf( "%s" , "JAVA5" );
-		
-		String name ="유재석"; int age = 40-5;
-		System.out.printf( "저는 %s 이고 나이는 %d 입니다." , name , age );
-		
-		System.out.printf( "저는 "+name+" 이고 나이는"+age+" 입니다." );
-		
-		System.out.printf( "저는 %s 이고 나이는 %6d 입니다. \n" , name , age );
-		System.out.printf( "저는 %s 이고 나이는 %-6d 입니다. \n" , name , age );
-		System.out.printf( "저는 %s 이고 나이는 %06d 입니다. \n" , name , age );
-		
-		System.out.printf( "저는 %s 이고 신장은 %5.2f 입니다. \n" , name , 182.257 );
+		// 3. printf( "형식문자" , 형식대입값1 ) : 인수값에 형식문자를 이용하여 수식을 출력하는 함수  
+				System.out.printf( "%s" , "JAVA5" );
+				
+				String name = "유재석"; int age = 40;
+				System.out.printf( "저는 %s 이고 나이는 %d 입니다." , name , age );
+				
+				System.out.println("저는 "+name+" 이고 나이는 "+age+" 입니다.");
+				
+				System.out.printf( "저는 %s 이고 나이는 %6d 입니다. \n" , name , age );
+				System.out.printf( "저는 %s 이고 나이는 %-6d 입니다. \n" , name , age );
+				System.out.printf( "저는 %s 이고 나이는 %06d 입니다. \n" , name , age );
+				System.out.printf( "저는 %s 이고 신장은 %5.2f 입니다. \n" , name , 188.257);
 		
 		// 실습1 :  아래와 같이 이스케이프 문자를 이용하여 콘솔에 출력하시오.
 		System.out.printf( "｜＼＿／｜ \n"  );

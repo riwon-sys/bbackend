@@ -1,0 +1,138 @@
+[boardservice10]
+      주제 : 회원제 커뮤니티
+
+      1. 주제선정
+      2. 주요기능들 : 회원기능, 계층형 게시물기능(카테고리형/댓글기능)
+      3. 세부구현들
+         ㄴ 회원 기능   : 가입 , 로그인 , 아이디/비밀번호 찾기 , 마이 , 탈퇴
+         ㄴ 게시물 기능  : 쓰기 , 전체조회 , 개별조회 , 수정 , 삭제 
+         
+         ㄴ 댓글 기능   : 쓰기 , 현재 게시물 댓글조회 , 수정 , 삭제
+      
+      4. 화면 flow chart( 강사님 참고 )
+      
+      5. DB 설계와 샘플(스프레드시트) --> DB/Table SQL -> SAMPLE INSERT -> ERD 다이어그램(SQL)
+          - * 저장 데이터파악 
+          회원 : 회원번호(PK) , 아이디 , 비밀번호 , 이름 , 연락처 , 가입일자
+          카테고리 : 카테고리번호(PK) , 카테고리명 , 작성일자
+          게시물 : 게시물번호(PK) , 제목 , 내용 , 조회수 , 작성자(회원번호FK) , 작성일자 
+          댓글 : 댓글번호(PK) , 내용 , 작성자(회원번호FK) , 작성일자
+          
+          - 1. 데이터들 간의 관계 파악 / 1:1 / 1:M / 1:M  (CF.PK는 중복이 안되고 FK는 중복이된다.)
+          (회원)회원번호PK          --       (게시물) 회원번호FK      [ 작성자역활 ]
+          (회원)회원번호PK          --       (댓글) 회원번호FK       [ 작성자역할 ]
+          (카테고리)카테고리번호PK)    --       (게시물) 카테고리번호FK   [ 카테고리명 역할 ]
+          (게시물) 카테고리번호PK     --       (댓글)게시물번호FK       [ 댓글위치 역할 ]
+          
+          
+          - 1-2. 샘플
+          회원 테이블 member
+          회원번호 mno / 아이디 mid / 비밀번호 mpwd / 이름 mname / 연락처 mphone / 가입일자 mdate
+              1         test1     qwert12345   김철수
+              2         test2     qwer12345     
+              3         test3     qwe12345
+              4         test4     qw12345
+              5         test5     q12345
+          카테고리 테이블 category
+          카테고리 번호 cno / 카,명 cname / 생성일자
+              1          자유
+              2          질문
+              3          노하우
+              4          공부
+              5          포럼
+          게시물 테이블 board
+          게시물 번호 tno / 게,제목 title / 내용 bcontent / 조회수 / 작성자 / 카테고리 / 작성일자 
+          
+          댓글 테이블 reply
+          댓글 번호 reno  / 내용 recontent / 작성
+              
+          - 2. 테이블당 PK(식별) 1개 이상 권장 
+          
+          
+    6. REST API 명세서(스프레드시트) : Controller 매개변수/리턴값 정의서
+	
+	7. JAVA 프로젝트 세팅 : 1.패키지구성 2. 클래스구성 3. 싱글톤 구성 4.DB연동코드 5. DTO 생성 6. AppStart  
+		[ 프로젝트 생성 ]
+		1. 상단 메뉴 => [file] => [new] => [java project] / 없으면[other...] -> java -> javaproject
+		2. 
+			name : 프로젝트관련영문
+			JRE : JAVASE-17			( 팀원 환경과 통일 )
+			[ finish ]
+			
+		[ MVC 패키지 샘플 구성 ] : 패키지를 공란으로 하면 최초 commit/push 에 업로드가 안된다.
+			src
+				controller 패키지 
+					MemberController 클래스 
+				
+				model 패키지 
+					dao 패키지 
+						MemberDao 클래스
+					dto 패키지
+						MemberDto 클래스 
+				view 패키지 
+					MemberView 클래스 
+				
+				AppStart 클래스 
+				
+				etc 패키지 
+					- 부가 파일들 : 설계메모.txt파일 , DBSQL.sql파일 , JDBC.jar파일
+		
+		[ 프로젝트 사용할 외부 라이브러리 ]
+			mysql-connector-j-9.1.0.jar : jdbc(자바-db연동 라이브러리 ) , 파일명 통일성.
+			1. 프로젝트 필요한 라이브러리 .jar 파일들을 프로젝트내 복사해둔다.
+			2. 각 라이브러리 .jar 파일들을 오른쪽 클릭해서 [ build path ] -> [ add to build path ]
+			
+		[ 프로젝트 GIT 올리는 방법 ] : 0.이클립스GIT연동.TXT파일 참고
+		
+	8. 기능별 VIEW - CONTROLLER - DAO 코드 작성하기. 
+		0. 그 구현할 기능의 DTO 만들기.
+			- VIEW[사용자]	<----------- DTO ------------>	DB[저장소]
+			- DTO : 서로 다른 레이어(MVC패턴)들 간의 데이터를 이동하는 객체 
+			- 여러가지의 데이터들을 고유하게 가져야 하므로 싱글톤은 필요없다. [사람DTO]
+			
+		0. 각 클래스별 싱글톤 만들기.
+			- 프로그램내 인스턴스(객체) 1개만 만들 수 있도록 하는 디자인 패턴 
+			- MVC 에서는 DAO , CONTROLLER , VIEW 에서 사용할 예정이다.
+			- 왜? 서비스를 제공하는 기능/함수 들은 한개만 존재해도 되니까. 굳이 여러개가 필요없니까.[ 출석 기능 ]
+			- 싱글톤 코드 3단계
+		
+		0. DB Connect
+			- JDBC : 자바와 DB의 연동 라이브러리 
+			- DB연동코드 
+			
+													CRUD		DML
+		1. 회원가입view - 회원가입controller - 회원가입dao		C			insert
+		2. 아이디찾기 : view -> controller - dao			R			select
+		3. 비밀번호찾기 : view -> controller - dao			R			select
+		4. 로그인 : view -> controller - dao				R			select
+		5. 로그아웃 : view -> controller					로직			x
+		6. 내정보조회 : view -> controller - dao			R			select
+		7. 회원탈퇴 : view -> controller - dao				D			delete 
+		8. 회원수정 : view -> controller - dao				U			update 
+		
+		* 디자인 패턴 이란 : 프로그래밍 설계 과정에 자주 발생되는 문제점를 해결 하는 설계 방법 제시
+		
+		
+         
+9.java 작성
+  ㄴ member dto 부터 작성
+
+
+예 ]Flow Chart: 난시가 있는 학생의 강의 자리 선택
+난시 교정 안경/렌즈를 사용 중인가요?
+
+예 → 2로 이동
+아니오 → 3으로 이동
+강의 화면이 뒷자리에서도 잘 보이나요?
+
+예 → 뒷자리
+아니오 → 앞자리
+교정을 하지 않은 상태에서 화면이 또렷하게 보이나요?
+
+예 → 뒷자리
+아니오 → 앞자리
+수업 집중도가 자리 위치에 따라 다르다고 느끼나요?
+
+예 → 본인이 더 편하게 느끼는 자리 선택
+아니오 → 앞자리를 선호하는 것이 추천
+
