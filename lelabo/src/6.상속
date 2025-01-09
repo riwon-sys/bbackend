@@ -86,10 +86,6 @@
 		member( int a ){ }
 		member( int a , int b ) { }
 		
-		
-	
-	
-	
 	
 	
 	

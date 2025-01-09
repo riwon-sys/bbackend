@@ -52,24 +52,31 @@ public class MemberController {
 		loginMno = 0;
 	} // f end 
 	
-	// 6. 내 정보 보기 컨틀롤러 메소드
-	//public 주는곳의타입 myInfo(받는 타입) {}
-	public MemberDto myInfo() {
-		// -dao 에게 로그인(로그인된 회원번호PK) 정보 주고 결과받기
-		MemberDto result = MemberDao.getInstance().myInfo(loginMno);
+	// 6. 내정보 보기 컨트롤러 메소드 
+	// public 주는것타입 myInfo( 받는타입 받는변수 ) {}
+	public MemberDto myInfo( ) {
+		// - Dao 에게 로그인(로그인된 회원번호PK) 정보 주고 결과 받기 
+		MemberDto result = MemberDao.getInstance().myInfo( loginMno );
 		return result;
-	}
-	// 7. 회원 탈퇴 컨트롤ㄹ러 메소드
-	public void delete() {
-		MemberDao.getInstance().delete(loginMno);
-	}
-	 
+	} // f end 
+	
+	// 7. 회원탈퇴 컨트롤러 메소드 
+	public void delete( ) {
+		MemberDao.getInstance().delete( loginMno );
+	} // f end 
+	
+	// 8. 회원수정 컨트롤러 메소드
+	public boolean update( MemberDto memberDto ) {
+		// + 누구를 수정 할껀지 , 현재 로그인 회원이 수정 하므로 현재로그인된 회원번호를 dto 담아주기.
+		memberDto.setMno( loginMno );
+		boolean result = MemberDao.getInstance().update( memberDto );
+		return result;
+	} // f end 
+	
 } // class end 
 
 
-
-
-
+ // 익스큐트업데이트 r u d; > count  //  익스큐트쿼리 s;검색
 
 
 

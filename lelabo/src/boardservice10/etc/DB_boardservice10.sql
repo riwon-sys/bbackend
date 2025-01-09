@@ -93,24 +93,13 @@ insert into reply(rcontent, mno, bno) values('하하하 댓글3', 4, 5);
 insert into reply(rcontent, mno, bno) values('하하하 댓글4', 5, 5);
 insert into reply(rcontent, mno, bno) values('하하하 댓글5', 1, 4);
    
+
+   
    #[CF]
 select * from member;
 select * from category;
 select * from board;
 select * from reply;
    
-   # [4] 댓글 테이블 생성
-create table reply(
-rno int unsigned auto_increment,
-rcontent varchar(100) not null,
-rdate datetime default now(),
-constraint primary key(rno),
-mno int unsigned,
-constraint foreign key(mno) references member(mno) on update cascade on delete cascade,
-bno int unsigned,
-constraint foreign key(bno) references board(bno) on update cascade on delete cascade
-);
-
-
 
    

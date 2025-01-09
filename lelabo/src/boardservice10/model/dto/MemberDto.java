@@ -84,3 +84,4 @@ public class MemberDto { // DTO : 서로 다른 레이어(MVC패턴)들 간의 �
 	}
 
 } // class end 
+
