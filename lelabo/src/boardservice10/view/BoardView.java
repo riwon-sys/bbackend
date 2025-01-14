@@ -27,9 +27,8 @@ public class BoardView {
 			else if( choose == 2 ) { 
 				int state = MemberView.getInstance().myInfo();
 				if( state == 0 ) { return; }
-				
 			}
-			else if( choose == 3 ) { }
+			else if( choose == 3 ) { write(); }
 			else if( choose == 4 ) { findById(); }
 		}// w end 
 	} // f end 
@@ -44,8 +43,8 @@ public class BoardView {
 			// - index는 0부터 리스트의 마지막 인덱스(요소개수-1) 까지 1씩 증가 반복  
 			BoardDto boardDto = result.get(index); // index번째의 요소 객체를 꺼내기
 			System.out.print( boardDto.getBno() + "\t" );	
-			System.out.print( boardDto.getCno() + "\t" );
-			System.out.print( boardDto.getMno() + "\t" );
+			System.out.print( boardDto.getCname() + "\t" );
+			System.out.print( boardDto.getMid() + "\t" );
 			System.out.print( boardDto.getBdate() + "\t" );
 			System.out.print( boardDto.getBtitle() + "\n" );	
 		} // for end 
@@ -57,12 +56,37 @@ public class BoardView {
 		// 1. 컨트롤러 에게 요청하고 결과를 받는다.
 		BoardDto result = BoardController.getInstance().findById( bno );
 		// 2. 결과
-		System.out.println( result.getCno()+"\t"+result.getMno()+
+		System.out.println( result.getCname()+"\t"+result.getMid()+
 				"\t"+result.getBview()+"\t"+result.getBdate() );
 		System.out.println( result.getBtitle() );	
 		System.out.println( result.getBcontent()  );
 			// -- 추후에 댓글 출력되는 코드 
 	} // f end 
+	
+	// 3. 게시물 작성 화면 
+	public void write( ) { 
+		categoryAll( ); // 카테고리 전체 조회 
+		System.out.print("카테고리 번호 : ");		int cno = scan.nextInt();
+		System.out.print("제목 : ");				String btitle = scan.next();
+		System.out.print("내용 : ");				String bcontent = scan.next();
+		BoardDto boardDto = new BoardDto();
+		boardDto.setCno(cno); boardDto.setBtitle(btitle); 
+		boardDto.setBcontent(bcontent);
+		boolean result = BoardController.getInstance().write( boardDto );
+		if( result ) { System.out.println("글쓰기 성공"); }
+		else { System.out.println("글쓰기 실패"); }
+	} // f end 
+	
+	// 4. 카테고리 전체 조회 화면
+	public void categoryAll( ) {
+		ArrayList< BoardDto > result = BoardController.getInstance().categoryAll();
+		for( int index = 0 ; index <= result.size() - 1 ; index++ ) {
+			BoardDto boardDto = result.get(index);
+			System.out.printf("번호 : %d  카테고리명 : %s \n" ,
+					boardDto.getCno() , boardDto.getCname()  );
+		} // for end 
+	} // f end 
+	
 } // class end 
 
 
