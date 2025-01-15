@@ -1,4 +1,4 @@
-package najaba.borad1;
+package najaba.board1;
 
 import java.util.Scanner;
 
