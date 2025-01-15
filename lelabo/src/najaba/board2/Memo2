@@ -1,0 +1,71 @@
+네! Scanner와 입력함수를 아주 쉽게 설명해드릴게요 😊
+
+### Scanner란?
+키보드로 무언가를 입력받을 때 사용하는 도구예요. 마치 선생님이 질문하고 학생이 대답하는 것처럼, 프로그램이 사용자에게 물어보고 답을 받는 거예요!
+
+### 간단한 예제들:
+
+1. **숫자 입력받기**
+```java
+// Scanner 도구 준비하기
+Scanner scan = new Scanner(System.in);
+
+// 숫자 입력받기
+System.out.println("당신의 나이는 몇 살인가요?");
+int 나이 = scan.nextInt();
+System.out.println("당신은 " + 나이 + "살 이군요!");
+```
+
+2. **문자열(글자) 입력받기**
+```java
+Scanner scan = new Scanner(System.in);
+
+// 이름 입력받기
+System.out.println("당신의 이름은 무엇인가요?");
+String 이름 = scan.next();
+System.out.println("반갑습니다 " + 이름 + "님!");
+```
+
+3. **여러 가지 정보 입력받기**
+```java
+Scanner scan = new Scanner(System.in);
+
+// 학생 정보 입력받기
+System.out.println("당신의 학년은? (숫자로 입력)");
+int 학년 = scan.nextInt();
+
+System.out.println("당신의 반은? (숫자로 입력)");
+int 반 = scan.nextInt();
+
+System.out.println("당신의 이름은?");
+String 이름 = scan.next();
+
+System.out.println(학년 + "학년 " + 반 + "반 " + 이름 + "님 환영합니다!");
+```
+
+### 자주 사용하는 입력 방법들:
+1. `scan.nextInt()`: 숫자 입력받기
+2. `scan.next()`: 한 단어 입력받기
+3. `scan.nextLine()`: 한 줄 전체 입력받기
+
+### 실제 활용 예제:
+```java
+Scanner scan = new Scanner(System.in);
+
+// 간단한 계산기
+System.out.println("첫 번째 숫자를 입력하세요:");
+int 숫자1 = scan.nextInt();
+
+System.out.println("두 번째 숫자를 입력하세요:");
+int 숫자2 = scan.nextInt();
+
+int 합계 = 숫자1 + 숫자2;
+System.out.println("두 숫자의 합은 " + 합계 + "입니다!");
+```
+
+### 주의할 점:
+1. Scanner를 사용하기 전에 꼭 `import java.util.Scanner;`를 써야 해요
+2. 입력받을 때는 적절한 타입(숫자는 nextInt, 글자는 next)을 사용해야 해요
+3. 입력을 기다리는 동안 프로그램은 잠시 멈춰있어요
+
+이해가 되셨나요? Scanner는 마치 프로그램과 대화를 나누는 도구라고 생각하시면 됩니다! 더 궁금한 점이 있다면 언제든 물어보세요 😊

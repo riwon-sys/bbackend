@@ -106,33 +106,6 @@ public class MemberController {
 	
 } // class end 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  // 익스큐트업데이트 r u d; > count  //  익스큐트쿼리 s;검색
 
 
