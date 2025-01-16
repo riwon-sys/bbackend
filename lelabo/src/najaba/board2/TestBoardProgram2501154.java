@@ -30,13 +30,13 @@ public class TestBoardProgram2501154 {
 		Tbp250115 tbp25011153 = new Tbp250115();
 		
 		while(true) {
-			System.out.println("1.등록 2.출력");
+			System.out.println("1.등록 2.출력 3.종료");
 			Scanner scan = new Scanner(System.in);
 			int choose = scan.nextInt();
 			
-			if(choose ==1) {System.out.println("등록 선택!");
+			if(choose ==1) {System.out.println(" 등록 선택! ");
 			System.out.println("제목!");String title = scan.next();
-			System.out.println("내용!");String content = scan.next()
+			System.out.println("내용!");String content = scan.next();
 			System.out.println("작성자!");String writer = scan.next();
 			
 			if(tbp25011151.title==null) {
@@ -48,9 +48,24 @@ public class TestBoardProgram2501154 {
 			}
 			} //ie
 			
-			else if(choose ==2) { System.out.println("출력 선택!");
-				if
-			}
-		}
-	}
-}
+			else if(choose ==2) { System.out.println(" 출력 선택! ");
+				if(tbp25011151 !=null) {
+					System.out.println("제목" + tbp25011151.title + "내용" + tbp25011151.content + "작성자" + tbp25011151.writer);
+				}
+				if(tbp25011152 !=null) {
+					System.out.println("제목" + tbp25011151.title + "내용" + tbp25011151.content + "작성자" + tbp25011151.writer);
+					
+				}
+				if(tbp25011153 !=null) {
+					System.out.println("제목" + tbp25011153.title + "내용" + tbp25011153.content + "작성자" + tbp25011153.writer);
+				}
+			} // ie
+			
+			else if(choose ==3) {System.out.println(" 종료! ");
+			scan.close();
+			break;
+			
+			} //ie
+		} //we 
+	} //me
+} // ce

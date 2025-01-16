@@ -56,6 +56,18 @@ public class TestBoardProgram2501153 {
 			}
 			} //ie
 			
+			else if(choose==2) {System.out.println("출력 선택!");
+				if(tbp2501151.title !=null) {
+					System.out.println("제목"+tbp2501151.title + "내용" + tbp2501151.content + "작성자" + tbp2501151.writer);
+				}
+				if(tbp2501152.title !=null) {
+					System.out.println("제목"+tbp2501152.title + "내용" + tbp2501152.content + "작성자" + tbp2501152.writer);
+				}
+				if(tbp2501153.title !=null) {
+					System.out.println("제목" + tbp2501153.title +"내용" + tbp2501153.content + "작성자" + tbp2501153.writer);
+				}
+			}
+			
 			else if(choose ==3) {System.out.println("종료!");
 			scan.close();
 			break;
